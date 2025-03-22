@@ -1,7 +1,16 @@
-import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import css from './GoBackBtn.module.css';
+
 const GoBackBtn = () => {
-  return <Link className={css.link}>GoBackBtn</Link>;
+  const location = useLocation();
+  const backLinkHref = useRef(location.state);
+
+  return (
+    <Link to={backLinkHref.current} className={css.link}>
+      GoBackBtn
+    </Link>
+  );
 };
 
 export default GoBackBtn;
